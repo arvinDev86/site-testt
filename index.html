@@ -9,6 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
 
 <script type="importmap">
+   // برای GitHub Pages SPA
+  (function() {
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect != location.href) {
+      history.replaceState(null, null, redirect);
+    }
+  })();
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.1",
@@ -24,6 +32,14 @@
   }
 }
 </script>
+    // ذخیره redirect برای صفحه refresh
+  (function() {
+    if (history.navigation && history.navigation.type === 1) {
+      // صفحه refresh شده
+      sessionStorage.redirect = location.href;
+      location.href = '/';
+    }
+  })();
   <script type="module" crossorigin src="/site-testt/assets/index-KIm9QHZa.js"></script>
   <link rel="stylesheet" crossorigin href="/site-testt/assets/index-BRmEg76E.css">
 </head>
